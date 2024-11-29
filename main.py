@@ -1,5 +1,6 @@
 from tkinter import *
 from math import floor
+
 # ---------------------------- CONSTANTS ------------------------------- #
 PINK = "#e2979c"
 RED = "#e7305b"
@@ -12,9 +13,8 @@ LONG_BREAK_MIN = 20
 CHECKMARK = "✔"
 reps = 0
 timer = None
+
 # ---------------------------- TIMER RESET ------------------------------- # 
-
-
 def reset_timer():
     window.after_cancel(timer)
     check_mark_label.config(text="")
@@ -24,8 +24,6 @@ def reset_timer():
     reps = 0
 
 # ---------------------------- TIMER MECHANISM ------------------------------- # 
-
-
 def timer_start():
     global reps
     reps += 1
@@ -45,8 +43,6 @@ def timer_start():
         title_label.config(text="Work", fg=GREEN)
 
 # ---------------------------- COUNTDOWN MECHANISM ------------------------------- #
-
-
 def count_down(count):
     count_min = floor(count / 60)
     count_sec = count % 60
@@ -63,13 +59,13 @@ def count_down(count):
         if reps % 2 == 0:
             check_mark = CHECKMARK * int(reps / 2)
             check_mark_label.config(text=check_mark)
+
 # ---------------------------- UI SETUP ------------------------------- #
-
-
 window = Tk()
 window.title("Pomodoro")
 window.config(padx=100, pady=50, bg=YELLOW)
 
+window.resizable(False, False)
 
 canvas = Canvas(width=200, height=224, bg=YELLOW, highlightthickness=0)
 tomato_img = PhotoImage(file="tomato.png")
